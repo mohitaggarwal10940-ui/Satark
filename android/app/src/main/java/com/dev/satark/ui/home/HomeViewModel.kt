@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dev.satark.R
+import com.dev.satark.data.mock.MockAnalysisData
 import com.dev.satark.data.model.AnalysisResponse
 import com.dev.satark.data.repository.AnalysisRepository
 import com.dev.satark.ocr.TextRecognitionManager
@@ -69,9 +70,10 @@ class HomeViewModel(
 
         viewModelScope.launch {
             val ocrManager = TextRecognitionManager(context.applicationContext)
-            val result = ocrManager.recognizeTextFromUri(uri)
-            ocrManager.close()
-
+            val result = ocrManager.recognizeTextFromUri(
+                uri,
+                _selectedLanguage.value
+            )
             result.onSuccess { text ->
                 if (text.isBlank()) {
                     _uiState.update {
@@ -114,8 +116,10 @@ class HomeViewModel(
 
         viewModelScope.launch {
             val ocrManager = TextRecognitionManager(context.applicationContext)
-            val result = ocrManager.recognizeTextFromBitmap(bitmap)
-            ocrManager.close()
+            val result = ocrManager.recognizeTextFromBitmap(
+                bitmap,
+                _selectedLanguage.value
+            )
 
             result.onSuccess { text ->
                 if (text.isBlank()) {
@@ -168,9 +172,13 @@ class HomeViewModel(
     }
 
     fun analyzeContent(onSuccess: () -> Unit) {
+
         val currentText = _uiState.value.extractedText
+
         if (currentText.isBlank()) {
-            _uiState.update { it.copy(error = "No content available for analysis.") }
+            _uiState.update {
+                it.copy(error = "No content available for analysis.")
+            }
             return
         }
 
@@ -183,23 +191,36 @@ class HomeViewModel(
         }
 
         loadingJob?.cancel()
+
         loadingJob = viewModelScope.launch {
-            // Stage progression for loading screen (Checking claims -> Detecting warning signals -> Reviewing available evidence)
+
+            // UI loading stages
             launch {
                 delay(600)
-                if (_uiState.value.isLoading) _uiState.update { it.copy(loadingStage = 1) }
+
+                if (_uiState.value.isLoading) {
+                    _uiState.update {
+                        it.copy(loadingStage = 1)
+                    }
+                }
+
                 delay(700)
-                if (_uiState.value.isLoading) _uiState.update { it.copy(loadingStage = 2) }
+
+                if (_uiState.value.isLoading) {
+                    _uiState.update {
+                        it.copy(loadingStage = 2)
+                    }
+                }
             }
 
             val result = repository.analyzeContent(
                 inputType = _uiState.value.inputType,
                 text = currentText,
-                language = _selectedLanguage.value,
-                forceMock = _uiState.value.useMockMode
+                language = _selectedLanguage.value
             )
 
             result.onSuccess { response ->
+
                 _uiState.update {
                     it.copy(
                         isLoading = false,
@@ -207,42 +228,47 @@ class HomeViewModel(
                         error = null
                     )
                 }
+
                 onSuccess()
+
             }.onFailure { throwable ->
-                // If real backend call failed, fallback gracefully to mock for testing if needed or report error
-                if (!_uiState.value.useMockMode && throwable.message?.contains("connect", ignoreCase = true) == true) {
-                    // Provide friendly backend error
-                    _uiState.update {
-                        it.copy(
-                            isLoading = false,
-                            error = "Couldn't connect to SATARK server. Switch to Mock Mode or check your backend connection."
-                        )
-                    }
-                } else {
-                    _uiState.update {
-                        it.copy(
-                            isLoading = false,
-                            error = throwable.localizedMessage ?: "Analysis failed. Please try again."
-                        )
-                    }
+
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = throwable.message
+                            ?: "Analysis failed. Please try again."
+                    )
                 }
             }
         }
     }
-
     fun loadMockResult(onSuccess: () -> Unit) {
+
         val lang = _selectedLanguage.value
-        val mockData = AnalysisRepository.createMockResponse(languageCode = lang)
+
+        val mockData = MockAnalysisData.createMockResponse(
+            languageCode = lang
+        )
+
         val sampleText = when (lang.lowercase()) {
-            "hi" -> "सेबी पंजीकृत सलाहकार।\n30% मासिक रिटर्न की गारंटी।\nआज ही ₹20,000 का भुगतान करें।"
+            "hi" -> "सेबी पंजीकृत सलाहकार।\n30% मासिक रिटर्न की गारंटी।\nआज ही ₹20,000 का भुगतान करें."
+
             "ta" -> "செபி பதிவு பெற்ற ஆலோசகர்.\nமாதம் 30% உத்தரவாத லாபம்.\nஇன்றே ₹20,000 செலுத்துங்கள்."
+
             "te" -> "సెబి నమోదిత సలహాదారు.\nనెలకు 30% హామీ రాబడి.\nఈ రోజే ₹20,000 చెల్లించండి."
-            "bn" -> "সেবি নিবন্ধিত উপদেষ্টা।\nমাসে ৩০% নিশ্চিত রিটার্ন।\nআজই ₹২০,০০০ প্রদান করুন।"
+
+            "bn" -> "সেবি নিবন্ধিত উপদেষ্টা।\nমাসে ৩০% নিশ্চিত রিটার্ন।\nআজই ₹২০,০০০ প্রদান করুন."
+
             "mr" -> "सेबी नोंदणीकृत सल्लागार.\nदरमहा ३०% हमी परतावा.\nआजच ₹२०,००० भरा."
+
             "gu" -> "સેબી રજિસ્ટર્ડ સલાહકાર.\nદર મહિને 30% ગેરંટીડ રિટર્ન.\nઆજે જ ₹20,000 ચૂકવો."
+
             "kn" -> "ಸೆಬಿ ನೋಂದಾಯಿತ ಸಲಹೆಗಾರ.\nತಿಂಗಳಿಗೆ 30% ಖಾತರಿಯ ಲಾಭ.\nಇಂದೇ ₹20,000 ಪಾವತಿಸಿ."
+
             else -> "SEBI registered advisor.\nGuaranteed 30% monthly returns.\nPay ₹20,000 today."
         }
+
         _uiState.update {
             it.copy(
                 isLoading = false,
@@ -251,6 +277,7 @@ class HomeViewModel(
                 error = null
             )
         }
+
         onSuccess()
     }
 

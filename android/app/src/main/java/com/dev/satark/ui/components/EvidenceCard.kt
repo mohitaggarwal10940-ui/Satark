@@ -45,8 +45,17 @@ fun EvidenceCard(
 
     val statusColor = when (evidence.status.uppercase()) {
         "VERIFIED" -> RiskLow
-        "UNVERIFIED" -> RiskMedium
-        "REFUTED", "MISLEADING" -> RiskVeryHigh
+
+        "PARTIALLY_VERIFIED",
+        "UNVERIFIED",
+        "NOT_VERIFIED",
+        "INSUFFICIENT_EVIDENCE",
+        "SOURCE_UNAVAILABLE" -> RiskMedium
+
+        "REFUTED",
+        "MISLEADING",
+        "CONTRADICTED" -> RiskVeryHigh
+
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }
 

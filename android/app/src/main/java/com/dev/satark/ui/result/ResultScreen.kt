@@ -57,6 +57,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.activity.compose.BackHandler
 import com.dev.satark.R
+import com.dev.satark.data.mock.MockAnalysisData
 import com.dev.satark.data.model.AnalysisResponse
 import com.dev.satark.data.model.SupportedLanguage
 import com.dev.satark.data.repository.AnalysisRepository
@@ -552,7 +553,7 @@ fun ResultScreenContent(
 private fun ResultScreenPreview() {
     SatarkTheme {
         ResultScreenContent(
-            result = AnalysisRepository.createMockResponse(),
+            result = MockAnalysisData.createMockResponse(),
             onNavigateHome = {}
         )
     }

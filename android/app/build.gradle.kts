@@ -54,7 +54,7 @@ dependencies {
 
     // ML Kit Text Recognition
     implementation(libs.play.services.mlkit.text.recognition)
-
+    implementation(libs.play.services.mlkit.text.recognition.devanagari)
     // Retrofit & OkHttp
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
