@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सतर्क</string>
+    <string name="app_tagline">कोणतीही कृती करण्यापूर्वी संशयास्पद आर्थिक संदेश तपासा.</string>
+    <string name="app_subtitle">गुंतवणूकदार फसवणूक व आर्थिक सुरक्षा सहाय्यक</string>
+
+    <!-- Home Actions -->
+    <string name="action_upload_screenshot">स्क्रीनशॉट अपलोड करा</string>
+    <string name="action_take_photo">फोटो काढा</string>
+    <string name="action_paste_text">मजकूर पेस्ट करा</string>
+    <string name="action_quick_tip">गुंतवणूक फसवणुकीपासून तुमचे कष्टाचे पैसे सुरक्षित ठेवा</string>
+
+    <!-- How SATARK works -->
+    <string name="how_it_works_title">सतर्क कसे कार्य करते</string>
+    <string name="step_input_title">१. इनपुट</string>
+    <string name="step_input_desc">संशयास्पद संदेशाचा स्क्रीनशॉट शेअर करा किंवा मजकूर पेस्ट करा.</string>
+    <string name="step_understand_title">२. समजून घ्या</string>
+    <string name="step_understand_desc">ऑप्टिकल तंत्रज्ञानाद्वारे मजकूर आणि मुख्य दावे तपासले जातात.</string>
+    <string name="step_verify_title">३. पडताळणी</string>
+    <string name="step_verify_desc">नियामक नोंदींच्या आधारे दाव्यांची सत्यता पडताळली जाते.</string>
+    <string name="step_assess_title">४. मूल्यांकन</string>
+    <string name="step_assess_desc">फसव्या पद्धती, घाई आणि दबावाच्या तंत्रांचे विश्लेषण केले जाते.</string>
+    <string name="step_protect_title">५. सुरक्षित राहा</string>
+    <string name="step_protect_desc">पाऊल उचलण्यापूर्वी सुरक्षित व योग्य सल्ला मिळतो.</string>
+
+    <!-- Navigation / Screens -->
+    <string name="screen_home">मुख्यपृष्ठ</string>
+    <string name="screen_input">मजकूर इनपुट</string>
+    <string name="screen_preview">मजकूर पुनरावलोकन</string>
+    <string name="screen_result">विश्लेषण निकाल</string>
+
+    <!-- Direct Input Screen -->
+    <string name="input_screen_title">संशयास्पद संदेश प्रविष्ट करा</string>
+    <string name="input_screen_subtitle">फसवणूक तपासण्यासाठी एसएमएस, व्हॉट्सॲप किंवा टेलिग्राम संदेश पेस्ट करा.</string>
+    <string name="input_text_placeholder">येथे संदेश पेस्ट करा (उदा. \"सेबी नोंदणीकृत सल्लागार, ३०% हमी परतावा…\")</string>
+    <string name="action_proceed_analysis">पुनरावलोकनासाठी पुढे जा</string>
+    <string name="error_empty_input">कृपया विश्लेषणासाठी मजकूर प्रविष्ट करा किंवा पेस्ट करा.</string>
+
+    <!-- Preview / Edit Screen -->
+    <string name="preview_screen_title">मिळालेल्या मजकुराचे पुनरावलोकन</string>
+    <string name="preview_subtitle">सुरक्षा मूल्यांकनासाठी पाठवण्यापूर्वी मजकूर तपासा व दुरुस्त करा.</string>
+    <string name="preview_found_text">आम्हाला हा मजकूर सापडला</string>
+    <string name="preview_edit_hint">तुम्ही खालील मजकुरात दुरुस्ती करू शकता</string>
+    <string name="action_analyze_now">सामग्रीचे विश्लेषण करा</string>
+    <string name="action_retake">दुसरी प्रतिमा निवडा</string>
+
+    <!-- Loading Screen -->
+    <string name="loading_title">सामग्रीचे विश्लेषण सुरू आहे…</string>
+    <string name="loading_step_1">दाव्यांची पडताळणी</string>
+    <string name="loading_step_2">धोक्याच्या संकेतांचा शोध</string>
+    <string name="loading_step_3">उपलब्ध पुराव्यांचे पुनरावलोकन</string>
+
+    <!-- Result Screen -->
+    <string name="result_title">सुरक्षा मूल्यांकन</string>
+    <string name="result_concern_score">चिंता धावसंख्या</string>
+    <string name="result_concern_out_of">/१००</string>
+    <string name="result_score_notice">स्वतंत्र चिंता धावसंख्या, शक्यता (प्रोबॅबिलिटी) नाही</string>
+    <string name="level_very_high">अति तीव्र चिंता</string>
+    <string name="level_high">उच्च चिंता</string>
+    <string name="level_medium">मध्यम चिंता</string>
+    <string name="level_low">कमी चिंता</string>
+
+    <string name="section_why">हे रेटिंग का?</string>
+    <string name="section_warning_signals">धोक्याचे संकेत</string>
+    <string name="section_claims_found">सापडलेले दावे</string>
+    <string name="section_evidence">पुरावा पुनरावलोकन</string>
+    <string name="section_recommended_actions">सुचवलेली संरक्षणात्मक पावले</string>
+    <string name="action_view_official_source">अधिकृत स्रोत पहा</string>
+    <string name="action_scan_another">दुसरा संदेश तपासा</string>
+
+    <!-- Errors -->
+    <string name="error_ocr_no_text">कोणताही वाचनीय मजकूर सापडला नाही.\nकृपया स्पष्ट प्रतिमा अपलोड करा.</string>
+    <string name="error_connection">सतर्क सर्व्हरशी संपर्क होऊ शकला नाही.\nइंटरनेट कनेक्शन तपासा.</string>
+    <string name="error_backend_unavailable">सुरक्षा सर्व्हर तात्पुरता अनुपलब्ध आहे. कृपया थोड्या वेळाने प्रयत्न करा.</string>
+    <string name="error_camera_permission">फोटो काढण्यासाठी कॅमेरा परवानगी आवश्यक आहे.</string>
+    <string name="action_retry">पुन्हा प्रयत्न करा</string>
+    <string name="action_cancel">रद्द करा</string>
+    <string name="action_grant_permission">परवानगी द्या</string>
+
+    <!-- Language & UI Extras -->
+    <string name="language_toggle_label">मराठी</string>
+    <string name="action_try_sample">नमुना संदेश निकाल तपासा</string>
+    <string name="ocr_reading_image">प्रतिमेतून मजकूर वाचला जात आहे…</string>
+    <string name="ocr_extracting_claims">एमएल किट द्वारे आर्थिक दावे तपासले जात आहेत</string>
+    <string name="sample_message_text">सेबी नोंदणीकृत सल्लागार. ऑप्शन्स ट्रेडिंगवर दरमहा ३०% हमी परतावा! हमी नफ्यासाठी आजच किमान ₹२०,००० जमा करा. मर्यादित स्लॉट शिल्लक आहेत, त्वरित पैसे ट्रान्सफर करा.</string>
+    <string name="action_insert_sample">नमुना संदेश भरा</string>
+    <string name="label_detected">आढळले</string>
+    <string name="label_found">सापडले</string>
+
+    <!-- Voice Reply -->
+    <string name="action_voice_reply">आवाजात ऐका</string>
+    <string name="action_voice_reply_desc">सुरक्षा मूल्यांकनाचा ऑडिओ ऐका</string>
+    <string name="action_stop_voice">ऑडिओ थांबवा</string>
+    <string name="voice_speaking_now">ऑडिओ स्पष्टीकरण सुरू आहे…</string>
+    <string name="action_voice_input">बोलून नोंदवा</string>
+</resources>

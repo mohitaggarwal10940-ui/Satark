@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ಸತರ್ಕ್</string>
+    <string name="app_tagline">ಯಾವುದೇ ಕ್ರಮ ಕೈಗೊಳ್ಳುವ ಮುನ್ನ ಅನುಮಾನಾಸ್ಪದ ಹಣಕಾಸು ಸಂದೇಶಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="app_subtitle">ಹೂಡಿಕೆದಾರರ ವಂಚನೆ ತಡೆ ಮತ್ತು ಆರ್ಥಿಕ ಸುರಕ್ಷತಾ ಸಹಾಯಕ</string>
+
+    <!-- Home Actions -->
+    <string name="action_upload_screenshot">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="action_take_photo">ಫೋಟೋ ತೆಗೆಯಿರಿ</string>
+    <string name="action_paste_text">ಪಠ್ಯವನ್ನು ಅಂಟಿಸಿ</string>
+    <string name="action_quick_tip">ಹೂಡಿಕೆ ವಂಚನೆಗಳಿಂದ ನಿಮ್ಮ ಕಷ್ಟಪಟ್ಟು ಗಳಿಸಿದ ಹಣವನ್ನು ರಕ್ಷಿಸಿ</string>
+
+    <!-- How SATARK works -->
+    <string name="how_it_works_title">ಸತರ್ಕ್ ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ</string>
+    <string name="step_input_title">1. ಇನ್‌ಪುಟ್</string>
+    <string name="step_input_desc">ಅನುಮಾನಾಸ್ಪದ ಸಂದೇಶದ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಹಂಚಿಕೊಳ್ಳಿ ಅಥವಾ ಪಠ್ಯವನ್ನು ಅಂಟಿಸಿ.</string>
+    <string name="step_understand_title">2. ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ</string>
+    <string name="step_understand_desc">ಆಪ್ಟಿಕಲ್ ಗುರುತಿಸುವಿಕೆ ಮೂಲಕ ಪ್ರಮುಖ ಹಕ್ಕುಗಳನ್ನು ಹೊರತೆಗೆಯಲಾಗುತ್ತದೆ.</string>
+    <string name="step_verify_title">3. ಪರಿಶೀಲಿಸಿ</string>
+    <string name="step_verify_desc">ನಿಯಂತ್ರಕ ದಾಖಲೆಗಳ ಆಧಾರದ ಮೇಲೆ ಭರವಸೆಗಳ ಸತ್ಯಾಸತ್ಯತೆಯನ್ನು ಪರೀಕ್ಷಿಸುತ್ತದೆ.</string>
+    <string name="step_assess_title">4. ಮೌಲ್ಯಮಾಪನ</string>
+    <string name="step_assess_desc">ವಂಚನೆಯ ಮಾದರಿಗಳು ಮತ್ತು ಒತ್ತಡದ ತಂತ್ರಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತದೆ.</string>
+    <string name="step_protect_title">5. ರಕ್ಷಣೆ</string>
+    <string name="step_protect_desc">ಕ್ರಮ ಕೈಗೊಳ್ಳುವ ಮುನ್ನ ಸುರಕ್ಷಿತ ಮತ್ತು ಸೂಕ್ತ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ.</string>
+
+    <!-- Navigation / Screens -->
+    <string name="screen_home">ಮುಖಪುಟ</string>
+    <string name="screen_input">ಪಠ್ಯ ಇನ್‌ಪುಟ್</string>
+    <string name="screen_preview">ಪಠ್ಯ ಪರಿಶೀಲನೆ</string>
+    <string name="screen_result">ವಿಶ್ಲೇಷಣೆ ಫಲಿತಾಂಶ</string>
+
+    <!-- Direct Input Screen -->
+    <string name="input_screen_title">ಅನುಮಾನಾಸ್ಪದ ಸಂದೇಶವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="input_screen_subtitle">ವಂಚನೆಗಳನ್ನು ಪರೀಕ್ಷಿಸಲು SMS, WhatsApp ಅಥವಾ Telegram ಸಂದೇಶವನ್ನು ಅಂಟಿಸಿ.</string>
+    <string name="input_text_placeholder">ಇಲ್ಲಿ ಸಂದೇಶವನ್ನು ಅಂಟಿಸಿ (ಉದಾ: \"ಸೆಬಿ ನೋಂದಾಯಿತ ಸಲಹೆಗಾರ, 30% ಮಾಸಿಕ ಖಾತರಿಯ ಲಾಭ…\")</string>
+    <string name="action_proceed_analysis">ಪರಿಶೀಲನೆಗೆ ಮುಂದುವರಿಯಿರಿ</string>
+    <string name="error_empty_input">ವಿಶ್ಲೇಷಣೆಗಾಗಿ ದಯವಿಟ್ಟು ಪಠ್ಯವನ್ನು ನಮೂದಿಸಿ ಅಥವಾ ಅಂಟಿಸಿ.</string>
+
+    <!-- Preview / Edit Screen -->
+    <string name="preview_screen_title">ಪಡೆಯಲಾದ ವಿಷಯವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="preview_subtitle">ಸುರಕ್ಷತಾ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಕಳುಹಿಸುವ ಮೊದಲು ಪಠ್ಯವನ್ನು ಸರಿಪಡಿಸಿ.</string>
+    <string name="preview_found_text">ಪತ್ತೆಯಾದ ಪಠ್ಯ</string>
+    <string name="preview_edit_hint">ನೀವು ಕೆಳಗಿನ ಪಠ್ಯವನ್ನು ಸಂಪಾದಿಸಬಹುದು ಅಥವಾ ತಿದ್ದಬಹುದು</string>
+    <string name="action_analyze_now">ವಿಶ್ಲೇಷಿಸಿ</string>
+    <string name="action_retake">ಮತ್ತೊಂದು ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+
+    <!-- Loading Screen -->
+    <string name="loading_title">ವಿಷಯವನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="loading_step_1">ಹಕ್ಕುಗಳ ಪರಿಶೀಲನೆ</string>
+    <string name="loading_step_2">ಎಚ್ಚರಿಕೆ ಸಂಕೇತಗಳ ಪತ್ತೆ</string>
+    <string name="loading_step_3">ಲಭ್ಯವಿರುವ ಪುರಾವೆಗಳ ಪರಿಶೀಲನೆ</string>
+
+    <!-- Result Screen -->
+    <string name="result_title">ಸುರಕ್ಷತಾ ಮೌಲ್ಯಮಾಪನ</string>
+    <string name="result_concern_score">ಕಾಳಜಿ ಸ್ಕೋರ್</string>
+    <string name="result_concern_out_of">/100</string>
+    <string name="result_score_notice">ಸ್ವತಂತ್ರ ಕಾಳಜಿ ಸ್ಕೋರ್, ಸಂಭವನೀಯತೆಯಲ್ಲ</string>
+    <string name="level_very_high">ಅತ್ಯಂತ ತೀವ್ರ ಕಳವಳ</string>
+    <string name="level_high">ಹೆಚ್ಚಿನ ಕಳವಳ</string>
+    <string name="level_medium">ಮಧ್ಯಮ ಕಳವಳ</string>
+    <string name="level_low">ಕಡಿಮೆ ಕಳವಳ</string>
+
+    <string name="section_why">ಈ ರೇಟಿಂಗ್‌ಗೆ ಕಾರಣವೇನು?</string>
+    <string name="section_warning_signals">ಎಚ್ಚರಿಕೆ ಸಂಕೇತಗಳು</string>
+    <string name="section_claims_found">ಕಂಡುಬಂದ ಹಕ್ಕುಗಳು</string>
+    <string name="section_evidence">ಪುರಾವೆ ಪರಿಶೀಲನೆ</string>
+    <string name="section_recommended_actions">ಶಿಫಾರಸು ಮಾಡಲಾದ ರಕ್ಷಣಾ ಕ್ರಮಗಳು</string>
+    <string name="action_view_official_source">ಅಧಿಕೃತ ಮೂಲವನ್ನು ವೀಕ್ಷಿಸಿ</string>
+    <string name="action_scan_another">ಮತ್ತೊಂದು ಸಂದೇಶವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
+
+    <!-- Errors -->
+    <string name="error_ocr_no_text">ಯಾವುದೇ ಪಠ್ಯ ಕಂಡುಬಂದಿಲ್ಲ.\nದಯವಿಟ್ಟು ಸ್ಪಷ್ಟವಾದ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.</string>
+    <string name="error_connection">ಸತರ್ಕ್ ಸರ್ವರ್ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ.\nಇಂಟರ್ನೆಟ್ ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="error_backend_unavailable">ಸರ್ವರ್ ತಾತ್ಕಾಲಿಕವಾಗಿ ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="error_camera_permission">ಫೋಟೋ ತೆಗೆಯಲು ಕ್ಯಾಮೆರಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="action_retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="action_cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="action_grant_permission">ಅನುಮತಿ ನೀಡಿ</string>
+
+    <!-- Language & UI Extras -->
+    <string name="language_toggle_label">ಕನ್ನಡ</string>
+    <string name="action_try_sample">ಮಾದರಿ ಸಂದೇಶ ಫಲಿತಾಂಶ ನೋಡಿ</string>
+    <string name="ocr_reading_image">ಚಿತ್ರದಿಂದ ಪಠ್ಯವನ್ನು ಓದಲಾಗುತ್ತಿದೆ…</string>
+    <string name="ocr_extracting_claims">ML Kit ಮೂಲಕ ಹಣಕಾಸಿನ ಹಕ್ಕುಗಳ ಗುರುತಿಸುವಿಕೆ</string>
+    <string name="sample_message_text">ಸೆಬಿ ನೋಂದಾಯಿತ ಸಲಹೆಗಾರ. ಆಯ್ಕೆಗಳ ವ್ಯಾಪಾರದಲ್ಲಿ ತಿಂಗಳಿಗೆ 30% ಖಾತರಿಯ ಲಾಭ! ಖಾತರಿಯ ಲಾಭ ಪಡೆಯಲು ಇಂದೇ ಕನಿಷ್ಠ ₹20,000 ಠೇವಣಿ ಮಾಡಿ. ಸೀಮಿತ ಸ್ಲಾಟ್‌ಗಳು ಮಾತ್ರ ಲಭ್ಯವಿವೆ, ತಕ್ಷಣ ವರ್ಗಾಯಿಸಿ.</string>
+    <string name="action_insert_sample">ಮಾದರಿ ಸಂದೇಶವನ್ನು ಭರ್ತಿ ಮಾಡಿ</string>
+    <string name="label_detected">ಪತ್ತೆಯಾಗಿದೆ</string>
+    <string name="label_found">ಕಂಡುಬಂದಿದೆ</string>
+
+    <!-- Voice Reply -->
+    <string name="action_voice_reply">ಧ್ವನಿಯಲ್ಲಿ ಆಲಿಸಿ</string>
+    <string name="action_voice_reply_desc">ಸುರಕ್ಷತಾ ಫಲಿತಾಂಶದ ಆಡಿಯೋ ಆಲಿಸಿ</string>
+    <string name="action_stop_voice">ಆಡಿಯೋ ನಿಲ್ಲಿಸಿ</string>
+    <string name="voice_speaking_now">ಆಡಿಯೋ ವಿವರಣೆ ಪ್ಲೇ ಆಗುತ್ತಿದೆ…</string>
+    <string name="action_voice_input">ಮಾತನಾಡಿ ನಮೂದಿಸಿ</string>
+</resources>

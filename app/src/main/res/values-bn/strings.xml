@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">সতর্ক</string>
+    <string name="app_tagline">কোনও পদক্ষেপ নেওয়ার আগে সন্দেহজনক আর্থিক বার্তা যাচাই করুন।</string>
+    <string name="app_subtitle">বিনিয়োগকারী প্রতারণা ও আর্থিক নিরাপত্তা সহায়ক</string>
+
+    <!-- Home Actions -->
+    <string name="action_upload_screenshot">স্ক্রিনশট আপলোড করুন</string>
+    <string name="action_take_photo">ছবি তুলুন</string>
+    <string name="action_paste_text">টেক্সট পেস্ট করুন</string>
+    <string name="action_quick_tip">বিনিয়োগের প্রতারণা থেকে আপনার কষ্টার্জিত অর্থ সুরক্ষিত রাখুন</string>
+
+    <!-- How SATARK works -->
+    <string name="how_it_works_title">সতর্ক কীভাবে কাজ করে</string>
+    <string name="step_input_title">১. ইনপুট</string>
+    <string name="step_input_desc">সন্দেহজনক বার্তার স্ক্রিনশট শেয়ার করুন অথবা টেক্সট পেস্ট করুন।</string>
+    <string name="step_understand_title">২. অনুধাবন</string>
+    <string name="step_understand_desc">অপটিক্যাল রিকগনিশনের মাধ্যমে মূল দাবিগুলি বের করা হয়।</string>
+    <string name="step_verify_title">৩. যাচাই</string>
+    <string name="step_verify_desc">নিয়ন্ত্রক রেকর্ডের ভিত্তিতে প্রতিশ্রুতির বৈধতা যাচাই করা হয়।</string>
+    <string name="step_assess_title">৪. মূল্যায়ন</string>
+    <string name="step_assess_desc">প্রতারণামূলক কৌশল এবং চাপের পদ্ধতি বিশ্লেষণ করা হয়।</string>
+    <string name="step_protect_title">৫. সুরক্ষা</string>
+    <string name="step_protect_desc">পদক্ষেপ নেওয়ার আগে নিরাপদ ও বস্তুনিষ্ঠ পরামর্শ প্রদান করে।</string>
+
+    <!-- Navigation / Screens -->
+    <string name="screen_home">হোম</string>
+    <string name="screen_input">টেক্সট ইনপুট</string>
+    <string name="screen_preview">টেক্সট পর্যালোচনা</string>
+    <string name="screen_result">বিশ্লেষণের ফলাফল</string>
+
+    <!-- Direct Input Screen -->
+    <string name="input_screen_title">সন্দেহজনক বার্তা লিখুন</string>
+    <string name="input_screen_subtitle">প্রতারণার ধরন পরীক্ষা করার জন্য এসএমএস, হোয়াটসঅ্যাপ বা টেলিগ্রাম বার্তা পেস্ট করুন।</string>
+    <string name="input_text_placeholder">এখানে বার্তা পেস্ট করুন (যেমন: \"সেবি নিবন্ধিত উপদেষ্টা, ৩০% মাসিক নিশ্চিত রিটার্ন…\")</string>
+    <string name="action_proceed_analysis">পর্যালোচনার জন্য এগিয়ে যান</string>
+    <string name="error_empty_input">বিশ্লেষণের জন্য অনুগ্রহ করে কোনও টেক্সট লিখুন বা পেস্ট করুন।</string>
+
+    <!-- Preview / Edit Screen -->
+    <string name="preview_screen_title">নিষ্কাশিত টেক্সট পর্যালোচনা</string>
+    <string name="preview_subtitle">সুরক্ষা মূল্যায়নের জন্য পাঠানোর আগে টেক্সট যাচাই ও সংশোধন করুন।</string>
+    <string name="preview_found_text">প্রাপ্ত টেক্সট</string>
+    <string name="preview_edit_hint">আপনি নিচে প্রাপ্ত টেক্সট সম্পাদনা করতে পারেন</string>
+    <string name="action_analyze_now">বিষয়বস্তু বিশ্লেষণ করুন</string>
+    <string name="action_retake">অন্য ছবি নির্বাচন করুন</string>
+
+    <!-- Loading Screen -->
+    <string name="loading_title">বিষয়বস্তু বিশ্লেষণ করা হচ্ছে…</string>
+    <string name="loading_step_1">দাবিগুলি পরীক্ষা করা হচ্ছে</string>
+    <string name="loading_step_2">সতর্কতা সংকেত শনাক্ত করা হচ্ছে</string>
+    <string name="loading_step_3">উপলব্ধ প্রমাণাদি পর্যালোচনা করা হচ্ছে</string>
+
+    <!-- Result Screen -->
+    <string name="result_title">সুরক্ষা মূল্যায়ন</string>
+    <string name="result_concern_score">উদ্বেগ স্কোর</string>
+    <string name="result_concern_out_of">/১০০</string>
+    <string name="result_score_notice">স্বাধীন উদ্বেগ স্কোর, কোনো সম্ভাব্যতা নয়</string>
+    <string name="level_very_high">অত্যন্ত উদ্বেগজনক</string>
+    <string name="level_high">উচ্চ উদ্বেগ</string>
+    <string name="level_medium">মাঝারি উদ্বেগ</string>
+    <string name="level_low">কম উদ্বেগ</string>
+
+    <string name="section_why">এই রেটিং কেন?</string>
+    <string name="section_warning_signals">সতর্কতা সংকেত</string>
+    <string name="section_claims_found">প্রাপ্ত দাবিগুলি</string>
+    <string name="section_evidence">প্রমাণ পর্যালোচনা</string>
+    <string name="section_recommended_actions">সুপারিশকৃত সুরক্ষামূলক পদক্ষেপ</string>
+    <string name="action_view_official_source">অফিসিয়াল উৎস দেখুন</string>
+    <string name="action_scan_another">অন্য বার্তা পরীক্ষা করুন</string>
+
+    <!-- Errors -->
+    <string name="error_ocr_no_text">পঠনযোগ্য কোনো টেক্সট পাওয়া যায়নি।\nঅনুগ্রহ করে আরও স্পষ্ট ছবি আপলোড করুন।</string>
+    <string name="error_connection">সতর্ক সার্ভারের সাথে সংযোগ স্থাপন করা যায়নি।\nইন্টারনেট পরীক্ষা করুন।</string>
+    <string name="error_backend_unavailable">সার্ভার সাময়িকভাবে অনুপলব্ধ। কিছুক্ষণ পরে আবার চেষ্টা করুন।</string>
+    <string name="error_camera_permission">ছবি তোলার জন্য ক্যামেরার অনুমতি প্রয়োজন।</string>
+    <string name="action_retry">পুনরায় চেষ্টা করুন</string>
+    <string name="action_cancel">বাতিল</string>
+    <string name="action_grant_permission">অনুমতি দিন</string>
+
+    <!-- Language & UI Extras -->
+    <string name="language_toggle_label">বাংলা</string>
+    <string name="action_try_sample">নমুনা বার্তার ফলাফল দেখুন</string>
+    <string name="ocr_reading_image">ছবি থেকে টেক্সট পড়া হচ্ছে…</string>
+    <string name="ocr_extracting_claims">এমএল কিটের সাহায্যে আর্থিক তথ্য যাচাই</string>
+    <string name="sample_message_text">সেবি নিবন্ধিত উপদেষ্টা। অপশন ট্রেডিংয়ে প্রতি মাসে ৩০% নিশ্চিত রিটার্ন! নিশ্চিত মুনাফা পেতে আজই ন্যূনতম ২০,০০০ টাকা জমা দিন। সীমিত স্লট বাকি আছে, অবিলম্বে ট্রান্সফার করুন।</string>
+    <string name="action_insert_sample">নমুনা বার্তা পূরণ করুন</string>
+    <string name="label_detected">চিহ্নিত</string>
+    <string name="label_found">পাওয়া গেছে</string>
+
+    <!-- Voice Reply -->
+    <string name="action_voice_reply">অডিওতে শুনুন</string>
+    <string name="action_voice_reply_desc">সুরক্ষা মূল্যায়নের অডিও শুনুন</string>
+    <string name="action_stop_voice">অডিও বন্ধ করুন</string>
+    <string name="voice_speaking_now">অডিও ব্যাখ্যা চলছে…</string>
+    <string name="action_voice_input">মুখে বলে লিখুন</string>
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">సతర్క్</string>
+    <string name="app_tagline">ఏదైనా చర్య తీసుకునే ముందు అనుమానాస్పద ఆర్థిక సందేశాలను తనిఖీ చేయండి.</string>
+    <string name="app_subtitle">పెట్టుబడిదారుల మోసాల నివారణ మరియు ఆర్థిక భద్రతా సహాయకుడు</string>
+
+    <!-- Home Actions -->
+    <string name="action_upload_screenshot">స్క్రీన్‌షాట్ అప్‌లోడ్ చేయండి</string>
+    <string name="action_take_photo">ఫోటో తీయండి</string>
+    <string name="action_paste_text">టెక్స్ట్ పేస్ట్ చేయండి</string>
+    <string name="action_quick_tip">పెట్టుబడి మోసాల నుండి మీ కష్టార్జితాన్ని రక్షించుకోండి</string>
+
+    <!-- How SATARK works -->
+    <string name="how_it_works_title">సతర్క్ ఎలా పనిచేస్తుంది</string>
+    <string name="step_input_title">1. ఇన్‌పుట్</string>
+    <string name="step_input_desc">అనుమానాస్పద సందేశం స్క్రీన్‌షాట్‌ను భాగస్వామ్యం చేయండి లేదా టెక్స్ట్ పేస్ట్ చేయండి.</string>
+    <string name="step_understand_title">2. అర్థం చేసుకోండి</string>
+    <string name="step_understand_desc">ఆప్టికల్ రికగ్నిషన్ ద్వారా టెక్స్ట్ మరియు కీలక దావాలు సేకరించబడతాయి.</string>
+    <string name="step_verify_title">3. ధృవీకరించండి</string>
+    <string name="step_verify_desc">నియంత్రణ రికార్డుల ఆధారంగా వాగ్దానాల ప్రామాణికత పరీక్షించబడుతుంది.</string>
+    <string name="step_assess_title">4. అంచనా వేయండి</string>
+    <string name="step_assess_desc">మోసపూరిత విధానాలు, ఒత్తిడి పద్ధతులను విశ్లేషిస్తుంది.</string>
+    <string name="step_protect_title">5. సురక్షితంగా ఉండండి</string>
+    <string name="step_protect_desc">నిర్ణయం తీసుకునే ముందు సురక్షితమైన మార్గదర్శకత్వాన్ని అందిస్తుంది.</string>
+
+    <!-- Navigation / Screens -->
+    <string name="screen_home">హోమ్</string>
+    <string name="screen_input">టెక్స్ట్ ఇన్‌పుట్</string>
+    <string name="screen_preview">టెక్స్ట్ సమీక్ష</string>
+    <string name="screen_result">విశ్లేషణ ఫలితం</string>
+
+    <!-- Direct Input Screen -->
+    <string name="input_screen_title">అనుమానాస్పద సందేశాన్ని నమోదు చేయండి</string>
+    <string name="input_screen_subtitle">మోసాలను తనిఖీ చేయడానికి SMS, వాట్సాప్ లేదా టెలిగ్రామ్ సందేశాన్ని ఇక్కడ పేస్ట్ చేయండి.</string>
+    <string name="input_text_placeholder">ఇక్కడ సందేశాన్ని పేస్ట్ చేయండి (ఉదా: \"సెబి రిజిస్టర్డ్ సలహాదారు, 30% నెలవారీ గ్యారెంటీ లాభాలు…\")</string>
+    <string name="action_proceed_analysis">సమీక్షకు కొనసాగండి</string>
+    <string name="error_empty_input">విశ్లేషణ కోసం దయచేసి ఏదైనా టెక్స్ట్ నమోదు చేయండి.</string>
+
+    <!-- Preview / Edit Screen -->
+    <string name="preview_screen_title">సేకరించిన కంటెంట్‌ను సమీక్షించండి</string>
+    <string name="preview_subtitle">భద్రతా మూల్యాంకనానికి పంపే ముందు టెక్స్ట్‌ను సరిచూసుకోండి.</string>
+    <string name="preview_found_text">సేకరించబడిన టెక్స్ట్</string>
+    <string name="preview_edit_hint">మీరు దిగువ టెక్స్ట్‌ను సరిదిద్దవచ్చు లేదా సవరించవచ్చు</string>
+    <string name="action_analyze_now">విశ్లేషించండి</string>
+    <string name="action_retake">మరొక చిత్రాన్ని ఎంచుకోండి</string>
+
+    <!-- Loading Screen -->
+    <string name="loading_title">కంటెంట్ విశ్లేషణ జరుగుతోంది…</string>
+    <string name="loading_step_1">దావాల తనిఖీ</string>
+    <string name="loading_step_2">హెచ్చరిక సంకేతాల గుర్తింపు</string>
+    <string name="loading_step_3">అందుబాటులో ఉన్న ఆధారాల సమీక్ష</string>
+
+    <!-- Result Screen -->
+    <string name="result_title">భద్రతా మూల్యాంకనం</string>
+    <string name="result_concern_score">ఆందోళన స్కోర్</string>
+    <string name="result_concern_out_of">/100</string>
+    <string name="result_score_notice">స్వతంత్ర ఆందోళన స్కోర్, సంభావ్యత కాదు</string>
+    <string name="level_very_high">చాలా ఎక్కువ ఆందోళన</string>
+    <string name="level_high">అధిక ఆందోళన</string>
+    <string name="level_medium">మధ్యస్థ ఆందోళన</string>
+    <string name="level_low">తక్కువ ఆందోళన</string>
+
+    <string name="section_why">ఈ రేటింగ్‌కు కారణం ఏమిటి?</string>
+    <string name="section_warning_signals">హెచ్చరిక సంకేతాలు</string>
+    <string name="section_claims_found">కనుగొనబడిన దావాలు</string>
+    <string name="section_evidence">ఆధారాల సమీక్ష</string>
+    <string name="section_recommended_actions">సూచించబడిన రక్షణ చర్యలు</string>
+    <string name="action_view_official_source">అధికారిక మూలాన్ని చూడండి</string>
+    <string name="action_scan_another">మరొక సందేశాన్ని తనిఖీ చేయండి</string>
+
+    <!-- Errors -->
+    <string name="error_ocr_no_text">ఎటువంటి టెక్స్ట్ కనుగొనబడలేదు.\nదయచేసి స్పష్టమైన చిత్రాన్ని అప్‌లోడ్ చేయండి.</string>
+    <string name="error_connection">సతర్క్ సర్వర్‌ను సంప్రదించడం సాధ్యపడలేదు.\nఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేయండి.</string>
+    <string name="error_backend_unavailable">సర్వర్ తాత్కాలికంగా అందుబాటులో లేదు. దయచేసి కాసేపటి తర్వాత మళ్లీ ప్రయత్నించండి.</string>
+    <string name="error_camera_permission">సందేశాల ఫోటో తీయడానికి కెమెరా అనుమతి అవసరం.</string>
+    <string name="action_retry">మళ్లీ ప్రయత్నించండి</string>
+    <string name="action_cancel">రద్దు చేయండి</string>
+    <string name="action_grant_permission">అనుమతి ఇవ్వండి</string>
+
+    <!-- Language & UI Extras -->
+    <string name="language_toggle_label">తెలుగు</string>
+    <string name="action_try_sample">నమూనా సందేశ ఫలితాన్ని చూడండి</string>
+    <string name="ocr_reading_image">చిత్రం నుండి టెక్స్ట్ చదవబడుతోంది…</string>
+    <string name="ocr_extracting_claims">ML Kit ద్వారా ఆర్థిక వివరాల గుర్తింపు</string>
+    <string name="sample_message_text">సెబి నమోదిత సలహాదారు. ఆప్షన్స్ ట్రేడింగ్‌లో నెలకు 30% ఖచ్చితమైన లాభాలు! లాభాలు పొందడానికి ఈ రోజే కనీసం ₹20,000 జమ చేయండి. పరిమిత స్లాట్‌లు మాత్రమే ఉన్నాయి, వెంటనే బదిలీ చేయండి.</string>
+    <string name="action_insert_sample">నమూనా సందేశాన్ని పూరించండి</string>
+    <string name="label_detected">గుర్తించబడినవి</string>
+    <string name="label_found">కనుగొనబడినవి</string>
+
+    <!-- Voice Reply -->
+    <string name="action_voice_reply">వాయిస్ వివరణ వినండి</string>
+    <string name="action_voice_reply_desc">భద్రతా సారాంశాన్ని వినండి</string>
+    <string name="action_stop_voice">ఆడియో ఆపండి</string>
+    <string name="voice_speaking_now">ఆడియో వివరణ నడుస్తోంది…</string>
+    <string name="action_voice_input">మాట్లాడి నమోదు చేయండి</string>
+</resources>

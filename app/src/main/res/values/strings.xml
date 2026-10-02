@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">SATARK</string>
+    <string name="app_tagline">Check suspicious financial messages before you act.</string>
+    <string name="app_subtitle">Investor Scam &amp; Financial Content Safety Assistant</string>
+    
+    <!-- Home Actions -->
+    <string name="action_upload_screenshot">Upload Screenshot</string>
+    <string name="action_take_photo">Take Photo</string>
+    <string name="action_paste_text">Paste Text</string>
+    <string name="action_quick_tip">Safeguard your hard-earned money from investment scams</string>
+    
+    <!-- How SATARK works -->
+    <string name="how_it_works_title">How SATARK Works</string>
+    <string name="step_input_title">1. Input</string>
+    <string name="step_input_desc">Share a screenshot or paste suspicious investment advice.</string>
+    <string name="step_understand_title">2. Understand</string>
+    <string name="step_understand_desc">Optical recognition extracts text and key claims.</string>
+    <string name="step_verify_title">3. Verify</string>
+    <string name="step_verify_desc">Cross-references promises against regulatory signals.</string>
+    <string name="step_assess_title">4. Assess</string>
+    <string name="step_assess_desc">Evaluates deceptive patterns, pressure tactics, and urgency.</string>
+    <string name="step_protect_title">5. Protect</string>
+    <string name="step_protect_desc">Empowers you with safe, objective next steps before you act.</string>
+
+    <!-- Navigation / Screens -->
+    <string name="screen_home">Home</string>
+    <string name="screen_input">Input Text</string>
+    <string name="screen_preview">Review Text</string>
+    <string name="screen_result">Analysis Result</string>
+    
+    <!-- Direct Input Screen -->
+    <string name="input_screen_title">Enter Suspicious Message</string>
+    <string name="input_screen_subtitle">Paste SMS, WhatsApp, Telegram, or email financial promotions to check for scam patterns.</string>
+    <string name="input_text_placeholder">Paste message here (e.g., \"Join our VIP group for guaranteed 30% monthly returns! SEBI registered advisor…\")</string>
+    <string name="action_proceed_analysis">Proceed to Review</string>
+    <string name="error_empty_input">Please paste or enter some text to analyze.</string>
+
+    <!-- Preview / Edit Screen -->
+    <string name="preview_screen_title">Review Extracted Content</string>
+    <string name="preview_subtitle">Verify and correct any text before sending for safety assessment.</string>
+    <string name="preview_found_text">We found this text</string>
+    <string name="preview_edit_hint">You can edit or correct the extracted text below</string>
+    <string name="action_analyze_now">Analyze Content</string>
+    <string name="action_retake">Choose Another Image</string>
+
+    <!-- Loading Screen -->
+    <string name="loading_title">Analyzing content…</string>
+    <string name="loading_step_1">Checking claims</string>
+    <string name="loading_step_2">Detecting warning signals</string>
+    <string name="loading_step_3">Reviewing available evidence</string>
+
+    <!-- Result Screen -->
+    <string name="result_title">Safety Assessment</string>
+    <string name="result_concern_score">Concern Score</string>
+    <string name="result_concern_out_of">/100</string>
+    <string name="result_score_notice">Independent concern score, not a probability</string>
+    <string name="level_very_high">VERY HIGH CONCERN</string>
+    <string name="level_high">HIGH CONCERN</string>
+    <string name="level_medium">MODERATE CONCERN</string>
+    <string name="level_low">LOW CONCERN</string>
+    
+    <string name="section_why">Why this rating?</string>
+    <string name="section_warning_signals">Warning Signals</string>
+    <string name="section_claims_found">Claims Found</string>
+    <string name="section_evidence">Evidence Review</string>
+    <string name="section_recommended_actions">Recommended Actions</string>
+    <string name="action_view_official_source">View official source</string>
+    <string name="action_scan_another">Check Another Message</string>
+
+    <!-- Errors -->
+    <string name="error_ocr_no_text">No readable text was found.\nPlease upload a clearer image.</string>
+    <string name="error_connection">Couldn\'t connect to SATARK.\nCheck your internet connection and try again.</string>
+    <string name="error_backend_unavailable">Safety analysis server is temporarily unreachable. Please try again shortly.</string>
+    <string name="error_camera_permission">Camera permission is required to capture photos of messages.</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_grant_permission">Grant Permission</string>
+
+    <!-- Language & UI Extras -->
+    <string name="language_toggle_label">हिंदी</string>
+    <string name="action_try_sample">Try sample suspicious message result</string>
+    <string name="ocr_reading_image">Reading text from image…</string>
+    <string name="ocr_extracting_claims">Extracting financial claims via ML Kit</string>
+    <string name="sample_message_text">SEBI registered advisor here. Guaranteed 30% monthly returns on options trading! Minimum deposit ₹20,000 today only to claim guaranteed profits. Limited slots remaining, transfer immediately.</string>
+    <string name="action_insert_sample">Insert sample suspicious message</string>
+    <string name="label_detected">detected</string>
+    <string name="label_found">found</string>
+
+    <!-- Voice Reply -->
+    <string name="action_voice_reply">Listen to Voice Reply</string>
+    <string name="action_voice_reply_desc">Hear audio safety summary</string>
+    <string name="action_stop_voice">Stop Audio</string>
+    <string name="voice_speaking_now">Playing audio explanation…</string>
+    <string name="action_voice_input">Speak Message</string>
+</resources>

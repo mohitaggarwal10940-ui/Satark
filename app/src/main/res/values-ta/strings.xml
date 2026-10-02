@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">சதர்க்</string>
+    <string name="app_tagline">எந்த முடிவும் எடுக்கும் முன் சந்தேகத்திற்குரிய நிதி செய்திகளை சரிபார்க்கவும்.</string>
+    <string name="app_subtitle">முதலீட்டாளர் மோசடி மற்றும் நிதி பாதுகாப்பு உதவியாளர்</string>
+
+    <!-- Home Actions -->
+    <string name="action_upload_screenshot">ஸ்கிரீன்ஷாட் பதிவேற்றுக</string>
+    <string name="action_take_photo">புகைப்படம் எடுக்க</string>
+    <string name="action_paste_text">உரையை ஒட்டுக</string>
+    <string name="action_quick_tip">முதலீட்டு மோசடிகளிலிருந்து உங்கள் பணத்தை பாதுகாக்கவும்</string>
+
+    <!-- How SATARK works -->
+    <string name="how_it_works_title">சதர்க் எவ்வாறு செயல்படுகிறது</string>
+    <string name="step_input_title">1. உள்ளீடு</string>
+    <string name="step_input_desc">சந்தேகத்திற்குரிய செய்தியின் ஸ்கிரீன்ஷாட் பகிரவும் அல்லது உரையை ஒட்டவும்.</string>
+    <string name="step_understand_title">2. புரிதல்</string>
+    <string name="step_understand_desc">ஆப்டிகல் அடையாளம் மூலம் முக்கிய கோரிக்கைகள் பிரித்தெடுக்கப்படுகின்றன.</string>
+    <string name="step_verify_title">3. சரிபார்ப்பு</string>
+    <string name="step_verify_desc">ஒழுங்குமுறை பதிவுகள் அடிப்படையில் நம்பகத்தன்மை சரிபார்க்கப்படுகிறது.</string>
+    <string name="step_assess_title">4. மதிப்பீடு</string>
+    <string name="step_assess_desc">ஏமாற்று வடிவங்கள், அவசரப்படுத்தும் உத்திகள் மதிப்பீடு செய்யப்படுகின்றன.</string>
+    <string name="step_protect_title">5. பாதுகாப்பு</string>
+    <string name="step_protect_desc">முடிவெடுக்கும் முன் பாதுகாப்பான வழிகாட்டலை வழங்குகிறது.</string>
+
+    <!-- Navigation / Screens -->
+    <string name="screen_home">முகப்பு</string>
+    <string name="screen_input">உரை உள்ளீடு</string>
+    <string name="screen_preview">உரை ஆய்வு</string>
+    <string name="screen_result">பகுப்பாய்வு முடிவு</string>
+
+    <!-- Direct Input Screen -->
+    <string name="input_screen_title">சந்தேகத்திற்குரிய செய்தியை உள்ளிடவும்</string>
+    <string name="input_screen_subtitle">மோசடி வடிவங்களை கண்டறிய எஸ்எம்எஸ், வாட்ஸ்அப் அல்லது டெலிகிராம் தகவல்களை ஒட்டவும்.</string>
+    <string name="input_text_placeholder">இங்கு செய்தியை ஒட்டவும் (उदा. \"செபி பதிவு பெற்ற ஆலோசகர், 30% மாத லாபம் உத்தரவாதம்…\")</string>
+    <string name="action_proceed_analysis">ஆய்வு செய்ய தொடரவும்</string>
+    <string name="error_empty_input">பகுப்பாய்வு செய்ய உரையை உள்ளிடவும் அல்லது ஒட்டவும்.</string>
+
+    <!-- Preview / Edit Screen -->
+    <string name="preview_screen_title">பிரித்தெடுக்கப்பட்ட உள்ளடக்கத்தை சரிபார்க்கவும்</string>
+    <string name="preview_subtitle">மதிப்பீட்டிற்கு அனுப்பும் முன் உரையை சரிபார்த்து திருத்தவும்.</string>
+    <string name="preview_found_text">கண்டறியப்பட்ட உரை</string>
+    <string name="preview_edit_hint">கீழே உள்ள உரையை நீங்கள் திருத்தலாம்</string>
+    <string name="action_analyze_now">உள்ளடக்கத்தை பகுப்பாய்வு செய்க</string>
+    <string name="action_retake">வேறு படம் தேர்ந்தெடுக்க</string>
+
+    <!-- Loading Screen -->
+    <string name="loading_title">உள்ளடக்கம் பகுப்பாய்வு செய்யப்படுகிறது…</string>
+    <string name="loading_step_1">கோரிக்கைகளை சரிபார்க்கிறது</string>
+    <string name="loading_step_2">எச்சரிக்கை சமிக்ஞைகளை கண்டறிகிறது</string>
+    <string name="loading_step_3">கிடைக்கக்கூடிய ஆதாரங்களை மதிப்பாய்வு செய்கிறது</string>
+
+    <!-- Result Screen -->
+    <string name="result_title">பாதுகாப்பு மதிப்பீடு</string>
+    <string name="result_concern_score">கவலை மதிப்பெண்</string>
+    <string name="result_concern_out_of">/100</string>
+    <string name="result_score_notice">சுயாதீன கவலை மதிப்பெண், சாத்தியக்கூறு அல்ல</string>
+    <string name="level_very_high">மிக அதிக கவலை</string>
+    <string name="level_high">அதிக கவலை</string>
+    <string name="level_medium">மிதமான கவலை</string>
+    <string name="level_low">குறைந்த கவலை</string>
+
+    <string name="section_why">இந்த மதிப்பீட்டிற்கு காரணம் என்ன?</string>
+    <string name="section_warning_signals">எச்சரிக்கை சமிக்ஞைகள்</string>
+    <string name="section_claims_found">கண்டறியப்பட்ட கோரிக்கைகள்</string>
+    <string name="section_evidence">ஆதார ஆய்வு</string>
+    <string name="section_recommended_actions">பரிந்துரைக்கப்பட்ட பாதுகாப்பு நடவடிக்கைகள்</string>
+    <string name="action_view_official_source">அதிகாரப்பூர்வ மூலத்தைப் பார்க்கவும்</string>
+    <string name="action_scan_another">மற்றொரு செய்தியைச் சரிபார்க்கவும்</string>
+
+    <!-- Errors -->
+    <string name="error_ocr_no_text">படிக்கக்கூடிய உரை எதுவும் கிடைக்கவில்லை.\nதெளிவான படத்தை பதிவேற்றவும்.</string>
+    <string name="error_connection">சதர்க் உடன் இணைக்க முடியவில்லை.\nஇணைய இணைப்பை சரிபார்க்கவும்.</string>
+    <string name="error_backend_unavailable">சர்வர் தற்காலிகமாக கிடைக்கவில்லை. சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="error_camera_permission">புகைப்படம் எடுக்க கேமரா அனுமதி தேவை.</string>
+    <string name="action_retry">மீண்டும் முயற்சி</string>
+    <string name="action_cancel">ரத்து</string>
+    <string name="action_grant_permission">அனுமதி வழங்குக</string>
+
+    <!-- Language & UI Extras -->
+    <string name="language_toggle_label">தமிழ்</string>
+    <string name="action_try_sample">மாதிரி செய்தி முடிவை சோதிக்கவும்</string>
+    <string name="ocr_reading_image">படத்திலிருந்து உரை படிக்கப்படுகிறது…</string>
+    <string name="ocr_extracting_claims">எம்எல் கிட் மூலம் தகவல்கள் பிரித்தெடுக்கப்படுகின்றன</string>
+    <string name="sample_message_text">செபி பதிவு பெற்ற ஆலோசகர். ஆப்ஷன்ஸ் வர்த்தகத்தில் மாதந்தோறும் 30% உத்தரவாத லாபம்! லாபத்தை உறுதிப்படுத்த இன்றே குறைந்தபட்சம் ₹20,000 செலுத்தவும். குறிப்பிட்ட இடங்களே உள்ளன, உடனடியாக பணம் அனுப்பவும்.</string>
+    <string name="action_insert_sample">மாதிரி செய்தியை உள்ளிடுக</string>
+    <string name="label_detected">கண்டறியப்பட்டது</string>
+    <string name="label_found">கிடைத்தது</string>
+
+    <!-- Voice Reply -->
+    <string name="action_voice_reply">ஆடியோவில் கேட்கவும்</string>
+    <string name="action_voice_reply_desc">பாதுகாப்பு சுருக்கத்தை கேட்கவும்</string>
+    <string name="action_stop_voice">ஆடியோவை நிறுத்து</string>
+    <string name="voice_speaking_now">ஆடியோ விளக்கம் இயங்குகிறது…</string>
+    <string name="action_voice_input">பேசி உள்ளிடவும்</string>
+</resources>
