@@ -2,6 +2,7 @@ package com.satark.backend.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -45,6 +46,26 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(response);
+    }
+
+    /**
+     * Phase 16: database outages (Mongo down, timeouts) surface as 503 with
+     * a safe static message — never the driver text, never user content.
+     * The AI pipeline itself never throws (stage-level guards), so this is
+     * the only new failure mapping; validation (400) is untouched.
+     */
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity<Map<String, Object>> handleDataAccessException(
+            DataAccessException exception
+    ) {
+        Map<String, Object> response = new HashMap<>();
+
+        response.put("error", "SERVICE_UNAVAILABLE");
+        response.put("message", "Analysis service is temporarily unavailable. Please try again.");
+
+        return ResponseEntity
+                .status(HttpStatus.SERVICE_UNAVAILABLE)
                 .body(response);
     }
 }

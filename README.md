@@ -4,8 +4,8 @@
 [![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat-square&logo=android&logoColor=white)](https://developer.android.com)
 [![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
 [![Material 3](https://img.shields.io/badge/Design-Material%203-7B1FA2?style=flat-square)](https://m3.material.io)
-[![Spring Boot](https://img.shields.io/badge/Backend-Spring%20Boot%203-6DB33F?style=flat-square&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![Java](https://img.shields.io/badge/Language-Java%2017+-ED8B00?style=flat-square&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Backend-Spring%20Boot%204-6DB33F?style=flat-square&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Java](https://img.shields.io/badge/Language-Java%2021-ED8B00?style=flat-square&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin%202.0-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 [![ML Kit](https://img.shields.io/badge/Vision-Google%20ML%20Kit-FFCA28?style=flat-square&logo=google&logoColor=black)](https://developers.google.com/ml-kit)
 [![Languages](https://img.shields.io/badge/Languages-8%20Indian%20Languages-00ACC1?style=flat-square)](#-supported-regional-languages)
@@ -66,25 +66,25 @@ flowchart TD
         RESP["AnalysisResponse\n(JSON: riskScore, claims, signals, actions)"]
     end
 
-    subgraph Backend ["Spring Boot 3 API Gateway (Lead: @1amol2)"]
+    subgraph Backend ["Spring Boot 4 API (Lead: @1amol2)"]
         CTRL["AnalysisController"]
         SRV["AnalysisService"]
-        REPO["AnalysisRepository\n(H2 / PostgreSQL)"]
+        REPO["AnalysisRepository\n(MongoDB: analyses)"]
         CTRL --> SRV
         SRV --> REPO
     end
 
-    subgraph AIEngine ["AI, NLP & LLM Intelligence Pipeline"]
-        subgraph P3 ["Phase 3: Claim Extraction & Heuristics (Lead: @Bivan11-tech)"]
-            EXT["NLP Claim Extractor\n(Returns, SEBI IDs, Urgency)"]
-            RULE["Regulatory Rule Engine\n(SEBI / RBI / Sachet Matcher)"]
-            SCORE["Calibrated Concern Scorer\n(0 - 100 Non-Probabilistic Score)"]
+    subgraph AIEngine ["Deterministic Intelligence Pipeline (implemented; LLM future scope)"]
+        subgraph P3 ["P3: Claim Extraction & Heuristics (deterministic, enabled by default)"]
+            EXT["Claim Extractor\n(Returns, SEBI IDs, Urgency, UPI)"]
+            RULE["Regulatory Rule Engine\n(Severity Mapping + Validation)"]
+            SCORE["Deterministic Concern Scorer\n(0 - 100, Sole Score Owner)"]
         end
 
-        subgraph P4 ["Phase 4: LLM Reasoning & Multilingual Synthesis (Lead: @Divyanshu9525)"]
-            PROMPT["Structured Prompt Engine\n(Zero-Hallucination Guardrails)"]
-            LLM["LLM Reasoning Core\n(Claim Verification & Fraud Context)"]
-            LANG["Multilingual Output Generator\n(Native Vernacular Explanations)"]
+        subgraph P4 ["P4: Evidence Verification (offline MVP, enabled by default)"]
+            PROMPT["Prompt Guardrails\n(Injection Detection + Schema Validation)"]
+            LLM["Claim Verifier\n(UNVERIFIED by Default, Never Fabricates)"]
+            LANG["Multilingual Safety Advisor\n(8 Languages, 1930 Directives)"]
         end
 
         EXT --> RULE --> SCORE
@@ -125,27 +125,33 @@ Satark/
 │   │   ├── build.gradle.kts       # Dependencies (Compose, ML Kit, Retrofit, Navigation)
 │   │   └── src/main/
 │   │       ├── AndroidManifest.xml # Permissions (Microphone, Internet, Audio)
-│   │       ├── java/com/satark/
-│   │       │   ├── data/          # Retrofit API clients & Models
+│   │       ├── java/com/dev/satark/
+│   │       │   ├── data/          # Retrofit API clients, Models & Mock data
 │   │       │   ├── ui/            # Jetpack Compose UI (Screens, Theme, Components)
-│   │       │   ├── util/          # ML Kit OCR & Audio helpers
+│   │       │   ├── ocr/           # ML Kit text recognition
+│   │       │   ├── voice/         # Speech-to-text / Text-to-speech helpers
 │   │       │   └── MainActivity.kt# Application entry & navigation
 │   │       └── res/               # Vector drawables, themes, and localized strings
 │   ├── build.gradle.kts           # Top-level Gradle configuration
 │   └── settings.gradle.kts        # Android module bindings
-└── backend/                       # Spring Boot 3 Analysis Engine (Server)
-    ├── pom.xml / build.gradle     # Spring Boot Web, Validation, Lombok, JPA
-    └── src/main/
-        ├── java/com/satark/backend/
+└── backend/                       # Spring Boot 4 Analysis Engine (Server, Java 21, Gradle-only)
+    ├── build.gradle.kts           # Spring Boot WebMVC, Validation, MongoDB, Lombok
+    ├── docs/                      # P3-MODEL.md, P4-EVIDENCE.md, P4-SOURCES.md
+    └── src/
+        ├── main/java/com/satark/backend/
+        │   ├── ai/                # P3: extractor, signals, guardrails, advisor, pipeline
+        │   ├── evidence/          # P4: status taxonomy, trusted sources, verifier, service
+        │   ├── risk/              # Deterministic scorer (sole score owner)
         │   ├── controller/        # AnalysisController (REST Endpoints)
         │   ├── dto/               # AnalysisRequest & AnalysisResponse records
-        │   ├── exception/         # GlobalExceptionHandler
+        │   ├── exception/         # GlobalExceptionHandler (400 validation, 503 DB, 500 safe)
         │   ├── model/             # Analysis, Claim, Evidence, RiskSignal entities
-        │   ├── repository/        # AnalysisRepository interface
-        │   ├── service/           # AnalysisService (Business Logic & AI Hook)
+        │   ├── repository/        # AnalysisRepository (MongoDB) interface
+        │   ├── service/           # AnalysisService (flag-gated P3/P4 integration)
         │   └── BackendApplication.java
-        └── resources/
-            └── application.properties # Server port, database, and LLM API keys
+        ├── main/resources/
+        │   └── application.properties # MongoDB URI, satark.ai.* / satark.evidence.* flags
+        └── test/                  # Unit + MockMvc contract + Mongo slice tests, p3-dataset.json
 ```
 
 ---
@@ -233,6 +239,23 @@ Accept: application/json
 }
 ```
 
+#### Current pipeline behavior (deterministic, no LLM yet)
+
+Every request runs extract → validate → signals → evidence → deterministic
+score → persist → respond. The numeric score comes only from the risk
+engine (severity weights + evidence adjustments, CRITICAL floor 80); no
+model output can override it. Evidence is offline: regulatory claims stay
+`UNVERIFIED` with a SEBI-portal link, never fabricated. Feature flags in
+`backend/src/main/resources/application.properties`:
+
+```properties
+satark.ai.enabled=true       # false restores the legacy mock analysis
+satark.evidence.enabled=true # false restores mock evidence
+satark.evidence.offline-mode=true
+```
+
+Details: `backend/docs/P3-MODEL.md`, `backend/docs/P4-EVIDENCE.md`, `backend/docs/P4-SOURCES.md`.
+
 ---
 
 ## 🧠 AI, NLP & LLM Risk Engine Guide
@@ -307,9 +330,10 @@ SATARK is built for Bharat. It provides end-to-end voice and text support across
 ## 💻 Development Setup & Installation
 
 ### Prerequisites
-- **JDK**: Java Development Kit 17 or higher
+- **JDK**: Java Development Kit 21 (backend toolchain requirement)
 - **Android Studio**: Ladybug (2024.2.1) or Koala with Android SDK 35
-- **Build Tool**: Gradle 8.7+ / Maven 3.9+
+- **Build Tool**: Gradle (backend is Gradle Kotlin DSL only — no Maven/`pom.xml`)
+- **MongoDB**: Reachable instance; export `MONGODB_URI` (e.g. `mongodb://localhost:27017`)
 - **Physical Device or Android Emulator**: API Level 26+ recommended
 
 ### 1. Clone the Repository
@@ -322,16 +346,21 @@ cd Satark
 ```bash
 cd backend
 
-# Run with Gradle
+# MongoDB must be reachable (DB name "satark")
+export MONGODB_URI="mongodb://localhost:27017"
+
+# Run
 ./gradlew bootRun
 
-# Or run with Maven
-mvn spring-boot:run
+# Tests (unit + MockMvc contract; persistence slice needs live MongoDB)
+./gradlew test
 ```
 The server will start at `http://localhost:8080`.
-Verify health:
+Verify (POST-only endpoint):
 ```bash
-curl http://localhost:8080/api/analyze
+curl -X POST http://localhost:8080/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{"inputType":"TEXT","text":"Guaranteed 30% monthly returns. Pay fastprofit@upi today.","language":"en"}'
 ```
 
 ### 3. Android Client Setup
@@ -342,7 +371,7 @@ curl http://localhost:8080/api/analyze
    - The backend URL is set to `http://10.0.2.2:8080/` (standard emulator host loopback).
 5. If testing on a physical device:
    - Ensure the device and development computer are on the same Wi-Fi network.
-   - Update `BASE_URL` in `android/app/src/main/java/com/satark/data/` to your computer's local IP (e.g. `http://192.168.1.15:8080/`).
+    - Update `BASE_URL` in `android/app/src/main/java/com/dev/satark/data/remote/` to your computer's local IP (e.g. `http://192.168.1.15:8080/`).
 6. Click **Run 'app'** (`Shift + F10`).
 
 ---
