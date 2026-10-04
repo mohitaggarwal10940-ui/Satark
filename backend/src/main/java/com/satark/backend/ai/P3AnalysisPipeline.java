@@ -24,6 +24,8 @@ public class P3AnalysisPipeline {
     private final ClaimExtractor claimExtractor;
     private final RiskSignalDetector riskSignalDetector;
     private final SafetyAdvisor safetyAdvisor;
+    private final LlmClient llmClient;
+    private final AiProperties aiProperties;
 
     /** P3-owned slice of the analysis. Fields never null. */
     public record P3Result(
@@ -50,7 +52,65 @@ public class P3AnalysisPipeline {
         } catch (RuntimeException e) {
             signals = List.of();
         }
-        SafetyAdvisor.Advice advice = safetyAdvisor.advise(claims, signals, language);
-        return new P3Result(claims, signals, advice.explanation(), advice.recommendedActions());
+        String explanation;
+        List<String> recommendedActions;
+
+        try {
+            String prompt = PromptBuilder.buildAnalysisPrompt(
+                    text,
+                    claims,
+                    signals,
+                    language,
+                    aiProperties.getMaxInputChars()
+            );
+            System.out.println("SATARK LLM PROVIDER = " + llmClient.getProvider());
+            System.out.println("SATARK LLM AVAILABLE = " + llmClient.isAvailable());
+
+            if (llmClient.isAvailable()) {
+
+                LlmResult llmResult =
+                        llmClient.analyze(
+                                text,
+                                language,
+                                prompt
+                        );
+                System.out.println("SATARK GROQ RESPONSE RECEIVED");
+                System.out.println("SATARK GROQ ACTIONS = " + llmResult.recommendedActions());
+                explanation = llmResult.explanation();
+                recommendedActions = llmResult.recommendedActions();
+
+            } else {
+
+                SafetyAdvisor.Advice advice =
+                        safetyAdvisor.advise(
+                                claims,
+                                signals,
+                                language
+                        );
+
+                explanation = advice.explanation();
+                recommendedActions = advice.recommendedActions();
+            }
+
+        } catch (Exception e) {
+            System.out.println("SATARK GROQ FAILED: " + e.getMessage());
+            // AI failure must never break SATARK.
+            SafetyAdvisor.Advice advice =
+                    safetyAdvisor.advise(
+                            claims,
+                            signals,
+                            language
+                    );
+
+            explanation = advice.explanation();
+            recommendedActions = advice.recommendedActions();
+        }
+
+        return new P3Result(
+                claims,
+                signals,
+                explanation,
+                recommendedActions
+        );
     }
 }

@@ -1,6 +1,7 @@
 package com.satark.backend.ai;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,9 +14,13 @@ import org.springframework.stereotype.Service;
  * while this bean remains the safe offline default.
  */
 @Service
+@ConditionalOnProperty(
+        name = "satark.ai.provider",
+        havingValue = "none",
+        matchIfMissing = true
+)
 @RequiredArgsConstructor
 public class NoOpLlmClient implements LlmClient {
-
     private final AiProperties properties;
 
     @Override
@@ -28,5 +33,9 @@ public class NoOpLlmClient implements LlmClient {
         // Phase 1: never available -> callers must use deterministic/mock path.
         // Phase 5 will expand this into a template-based fallback explainer.
         return false;
+    }
+    @Override
+    public LlmResult analyze(String rawText, String language, String prompt) {
+        throw new IllegalStateException("No LLM provider is available");
     }
 }

@@ -3,10 +3,12 @@ package com.satark.backend.dto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import com.satark.backend.model.Claim;
 import com.satark.backend.model.Evidence;
 import com.satark.backend.model.RiskSignal;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -60,10 +62,8 @@ class ApiContractParityTest {
     }
 
     private Set<String> fieldNames(String json) throws Exception {
-        var it = mapper.readTree(json).fieldNames();
-        return Stream.generate(() -> null)
-                .takeWhile(x -> it.hasNext())
-                .map(x -> it.next())
-                .collect(Collectors.toSet());
+        return new HashSet<>(
+                mapper.readTree(json).propertyNames()
+        );
     }
 }

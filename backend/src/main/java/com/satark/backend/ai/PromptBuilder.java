@@ -73,12 +73,27 @@ public final class PromptBuilder {
         }
         sb.append("\n<user_content>\n").append(bounded).append("\n</user_content>\n");
         sb.append("\nRequirements:\n"
-                + "1. Explain specifically WHY this message is hazardous in plain language for everyday investors.\n"
-                + "2. Provide exactly 3 actionable, immediate protection steps localized in the target language.\n"
-                + "3. Reference official redressal channels: Cyber Crime Helpline 1930 and SEBI SCORES portal.\n"
-                + "4. Do not give investment recommendations. Do not state scam probability.\n"
-                + "5. Respond with two sections only: EXPLANATION: ... then ACTIONS:\n"
-                + "   - action 1\n   - action 2\n   - action 3\n");
+                + "1. Explain the message's safety assessment in plain language for everyday investors.\n"
+                + "2. Use the deterministic risk signals as the primary indication of suspicious behavior.\n"
+                + "3. If there are NO risk signals, do NOT invent or speculate about phishing, fraud, scams, or missing evidence as a reason for concern. Treat the message as low concern unless the message itself contains a clear suspicious element.\n"
+                + "4. If there are NO risk signals, explain why the message appears routine or relatively safe, while still encouraging the user to verify financial activity through official apps or websites when appropriate.\n"
+                + "5. If risk signals ARE present, clearly explain which signals make the message concerning and why.\n"
+                + "6. Provide 3 to 6 actionable protection steps appropriate to the actual situation. Do not recommend reporting a message to authorities unless the message shows credible signs of fraud or the user indicates that fraud has occurred.\n"
+                + "7. Reference official redressal channels such as Cyber Crime Helpline 1930 and SEBI SCORES only when relevant to the situation.\n"
+                + "8. Do not give investment recommendations.\n"
+                + "9. Do not state or estimate scam probability.\n"
+                + "10. Preserve uncertainty when evidence is unavailable; do not convert ordinary lack of evidence into evidence of fraud.\n"
+                + "11. Return ONLY a valid JSON object with exactly these fields:\n"
+                + "   {\n"
+                + "     \"explanation\": \"plain-language explanation\",\n"
+                + "     \"recommendedActions\": [\n"
+                + "       \"action 1\",\n"
+                + "       \"action 2\",\n"
+                + "       \"action 3\"\n"
+                + "     ]\n"
+                + "   }\n"
+                + "12. Do not include markdown, code fences, additional fields, or any text outside the JSON object.\n");
         return sb.toString();
+
     }
 }

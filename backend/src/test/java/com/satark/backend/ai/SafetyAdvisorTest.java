@@ -45,8 +45,8 @@ class SafetyAdvisorTest {
 
     @Test
     void unknownLanguageFallsBackToEnglish() {
-        var claims = List.of();
-        var signals = List.of();
+        List<Claim> claims = List.of();
+        List<RiskSignal> signals = List.of();
         assertEquals(advisor.advise(claims, signals, "en").explanation(),
                 advisor.advise(claims, signals, "xx").explanation());
     }

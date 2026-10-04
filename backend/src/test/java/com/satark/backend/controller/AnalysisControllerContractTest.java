@@ -5,23 +5,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.satark.backend.TestFakes;
-import com.satark.backend.ai.AiProperties;
-import com.satark.backend.ai.DeterministicClaimExtractor;
-import com.satark.backend.ai.DeterministicFallbackExplainer;
-import com.satark.backend.ai.DeterministicRiskSignalDetector;
-import com.satark.backend.ai.P3AnalysisPipeline;
-import com.satark.backend.ai.SafetyAdvisor;
+import com.satark.backend.ai.*;
 import com.satark.backend.evidence.DeterministicClaimVerifier;
 import com.satark.backend.evidence.EvidenceProperties;
 import com.satark.backend.evidence.EvidenceService;
 import com.satark.backend.evidence.TrustedSourceRegistry;
+import com.satark.backend.exception.GlobalExceptionHandler;
 import com.satark.backend.model.Analysis;
 import com.satark.backend.risk.DeterministicRiskScorer;
 import com.satark.backend.service.AnalysisService;
 import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -38,7 +35,11 @@ import org.springframework.test.web.servlet.MockMvc;
  * path keeps the exact API contract.
  */
 @WebMvcTest(AnalysisController.class)
-@Import(AnalysisControllerContractTest.Stack.class)
+@ContextConfiguration(classes = {
+        AnalysisController.class,
+        AnalysisControllerContractTest.Stack.class,
+        GlobalExceptionHandler.class
+})
 class AnalysisControllerContractTest {
 
     @Configuration
@@ -53,7 +54,10 @@ class AnalysisControllerContractTest {
             P3AnalysisPipeline pipeline = new P3AnalysisPipeline(
                     new DeterministicClaimExtractor(ai),
                     new DeterministicRiskSignalDetector(),
-                    new SafetyAdvisor(new DeterministicFallbackExplainer()));
+                    new SafetyAdvisor(new DeterministicFallbackExplainer()),
+                    new NoOpLlmClient(ai),
+                    ai
+            );
             return new AnalysisService(TestFakes.savingRepository(new AtomicReference<Analysis>()),
                     ai, pipeline, ev,
                     new EvidenceService(new DeterministicClaimVerifier(sources), sources),

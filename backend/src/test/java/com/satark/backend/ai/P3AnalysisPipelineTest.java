@@ -18,10 +18,14 @@ class P3AnalysisPipelineTest {
     @BeforeEach
     void setUp() {
         AiProperties props = new AiProperties();
+
         pipeline = new P3AnalysisPipeline(
                 new DeterministicClaimExtractor(props),
                 new DeterministicRiskSignalDetector(),
-                new SafetyAdvisor(new DeterministicFallbackExplainer()));
+                new SafetyAdvisor(new DeterministicFallbackExplainer()),
+                new NoOpLlmClient(props),
+                props
+        );
     }
 
     @Test

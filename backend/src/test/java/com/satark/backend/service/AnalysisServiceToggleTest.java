@@ -4,12 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.satark.backend.ai.AiProperties;
-import com.satark.backend.ai.DeterministicClaimExtractor;
-import com.satark.backend.ai.DeterministicFallbackExplainer;
-import com.satark.backend.ai.DeterministicRiskSignalDetector;
-import com.satark.backend.ai.P3AnalysisPipeline;
-import com.satark.backend.ai.SafetyAdvisor;
+import com.satark.backend.ai.*;
 import com.satark.backend.dto.AnalysisRequest;
 import com.satark.backend.dto.AnalysisResponse;
 import com.satark.backend.evidence.DeterministicClaimVerifier;
@@ -54,7 +49,10 @@ class AnalysisServiceToggleTest {
         P3AnalysisPipeline pipeline = new P3AnalysisPipeline(
                 new DeterministicClaimExtractor(props),
                 new DeterministicRiskSignalDetector(),
-                new SafetyAdvisor(new DeterministicFallbackExplainer()));
+                new SafetyAdvisor(new DeterministicFallbackExplainer()),
+                new NoOpLlmClient(props),
+                props
+        );
         return new AnalysisService(fakeRepository(saved), props, pipeline,
                 evidenceProps, new EvidenceService(new DeterministicClaimVerifier(sources), sources),
                 new DeterministicRiskScorer());
