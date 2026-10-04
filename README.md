@@ -343,26 +343,74 @@ cd Satark
 ```
 
 ### 2. Backend Setup (Spring Boot)
-```bash
+
+The SATARK backend uses Spring Boot 4, Java 21, Gradle, MongoDB Atlas, and
+Groq for LLM-powered explanations.
+
+#### Environment Variables
+
+The backend requires the following environment variables:
+
+```text
+MONGODB_URI
+GROQ_API_KEY
+```
+For MongoDB Atlas, use your own Atlas connection string:
+```properties
+mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?appName=Cluster0
+```
+For the Groq LLM provider, create a Groq API key and add it to your system
+environment variables as:
+```properties
+GROQ_API_KEY=<your-groq-api-key>
+```
+
+On Windows, these can be configured through:
+
+System Properties → Advanced → Environment Variables
+
+Add:
+```properties
+MONGODB_URI = mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?appName=Cluster0
+GROQ_API_KEY = <your-groq-api-key>
+```
+
+Backend Configuration
+
+The backend uses:
+
+```properties
+spring.mongodb.uri=${MONGODB_URI}
+spring.mongodb.database=satark
+
+satark.ai.enabled=true
+satark.ai.provider=groq
+satark.ai.model=openai/gpt-oss-20b
+satark.ai.timeout=15s
+satark.ai.max-input-chars=4000
+
+satark.evidence.enabled=true
+satark.evidence.offline-mode=true
+```
+
+Run the Backend
+
+From the repository root:
+```properties
 cd backend
-
-# MongoDB must be reachable (DB name "satark")
-export MONGODB_URI="mongodb://localhost:27017"
-
-# Run
-./gradlew bootRun
-
-# Tests (unit + MockMvc contract; persistence slice needs live MongoDB)
-./gradlew test
-```
-The server will start at `http://localhost:8080`.
-Verify (POST-only endpoint):
-```bash
-curl -X POST http://localhost:8080/api/analyze \
-  -H "Content-Type: application/json" \
-  -d '{"inputType":"TEXT","text":"Guaranteed 30% monthly returns. Pay fastprofit@upi today.","language":"en"}'
+.\gradlew bootRun
 ```
 
+The server will start at:
+```properties
+http://localhost:8080
+```
+
+Run tests with:
+```properties
+.\gradlew test
+```
+http://localhost:8080
 ### 3. Android Client Setup
 1. Open Android Studio and choose **Open an Existing Project**.
 2. Select the `android/` directory inside `Satark`.
