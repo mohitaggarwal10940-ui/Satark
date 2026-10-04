@@ -14,6 +14,8 @@ retrofit = "2.11.0"
 okhttp = "4.12.0"
 coil = "2.7.0"
 mlkit-text-recognition-devanagari = "16.0.1"
+mlkitTranslation = "17.0.3"
+kotlinCoroutines = "1.10.2"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -42,6 +44,8 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 play-services-mlkit-text-recognition-devanagari = { module = "com.google.android.gms:play-services-mlkit-text-recognition-devanagari", version.ref = "mlkit-text-recognition-devanagari" }
+play-services-mlkit-translation = { module = "com.google.mlkit:translate", version.ref = "mlkitTranslation" }
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinCoroutines" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -9,7 +9,9 @@ import com.dev.satark.R
 import com.dev.satark.data.mock.MockAnalysisData
 import com.dev.satark.data.model.AnalysisResponse
 import com.dev.satark.data.repository.AnalysisRepository
+import com.dev.satark.data.translator.AnalysisTranslator
 import com.dev.satark.ocr.TextRecognitionManager
+import com.dev.satark.util.SatarkTranslator
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,12 +47,45 @@ class HomeViewModel(
 
     private var loadingJob: Job? = null
 
+    private val satarkTranslator = SatarkTranslator()
+    private val analysisTranslator = AnalysisTranslator(satarkTranslator)
+
+    private var canonicalResult: AnalysisResponse? = null
+    private var translationJob: Job? = null
+
     fun toggleLanguage() {
         _selectedLanguage.value = if (_selectedLanguage.value == "hi") "en" else "hi"
     }
 
     fun setLanguage(lang: String) {
         _selectedLanguage.value = lang
+
+        val originalResult = canonicalResult ?: return
+
+        translationJob?.cancel()
+
+        translationJob = viewModelScope.launch {
+            try {
+                val translatedResult = analysisTranslator.translate(
+                    response = originalResult,
+                    language = lang
+                )
+
+                _uiState.update {
+                    it.copy(
+                        result = translatedResult,
+                        error = null
+                    )
+                }
+
+            } catch (e: Exception) {
+                _uiState.update {
+                    it.copy(
+                        error = "Translation failed: ${e.localizedMessage}"
+                    )
+                }
+            }
+        }
     }
 
     fun setMockMode(enabled: Boolean) {
@@ -216,21 +251,40 @@ class HomeViewModel(
             val result = repository.analyzeContent(
                 inputType = _uiState.value.inputType,
                 text = currentText,
-                language = _selectedLanguage.value
+                language = "en"
             )
 
             result.onSuccess { response ->
 
-                _uiState.update {
-                    it.copy(
-                        isLoading = false,
-                        result = response,
-                        error = null
+                // Keep the original English response.
+                canonicalResult = response
+
+                try {
+                    val translatedResult = analysisTranslator.translate(
+                        response = response,
+                        language = _selectedLanguage.value
                     )
+
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            result = translatedResult,
+                            error = null
+                        )
+                    }
+
+                } catch (e: Exception) {
+                    // Analysis succeeded even if translation failed.
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            result = response,
+                            error = "Analysis completed, but translation failed."
+                        )
+                    }
                 }
 
                 onSuccess()
-
             }.onFailure { throwable ->
 
                 _uiState.update {
@@ -245,40 +299,47 @@ class HomeViewModel(
     }
     fun loadMockResult(onSuccess: () -> Unit) {
 
-        val lang = _selectedLanguage.value
-
         val mockData = MockAnalysisData.createMockResponse(
-            languageCode = lang
+            languageCode = "en"
         )
 
-        val sampleText = when (lang.lowercase()) {
-            "hi" -> "सेबी पंजीकृत सलाहकार।\n30% मासिक रिटर्न की गारंटी।\nआज ही ₹20,000 का भुगतान करें."
+        val sampleText =
+            "SEBI registered advisor.\n" +
+                    "Guaranteed 30% monthly returns.\n" +
+                    "Pay ₹20,000 today."
 
-            "ta" -> "செபி பதிவு பெற்ற ஆலோசகர்.\nமாதம் 30% உத்தரவாத லாபம்.\nஇன்றே ₹20,000 செலுத்துங்கள்."
+        canonicalResult = mockData
 
-            "te" -> "సెబి నమోదిత సలహాదారు.\nనెలకు 30% హామీ రాబడి.\nఈ రోజే ₹20,000 చెల్లించండి."
+        viewModelScope.launch {
+            try {
+                val translatedResult = analysisTranslator.translate(
+                    response = mockData,
+                    language = _selectedLanguage.value
+                )
 
-            "bn" -> "সেবি নিবন্ধিত উপদেষ্টা।\nমাসে ৩০% নিশ্চিত রিটার্ন।\nআজই ₹২০,০০০ প্রদান করুন."
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        extractedText = sampleText,
+                        result = translatedResult,
+                        error = null
+                    )
+                }
 
-            "mr" -> "सेबी नोंदणीकृत सल्लागार.\nदरमहा ३०% हमी परतावा.\nआजच ₹२०,००० भरा."
+            } catch (e: Exception) {
 
-            "gu" -> "સેબી રજિસ્ટર્ડ સલાહકાર.\nદર મહિને 30% ગેરંટીડ રિટર્ન.\nઆજે જ ₹20,000 ચૂકવો."
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        extractedText = sampleText,
+                        result = mockData,
+                        error = "Sample loaded, but translation failed."
+                    )
+                }
+            }
 
-            "kn" -> "ಸೆಬಿ ನೋಂದಾಯಿತ ಸಲಹೆಗಾರ.\nತಿಂಗಳಿಗೆ 30% ಖಾತರಿಯ ಲಾಭ.\nಇಂದೇ ₹20,000 ಪಾವತಿಸಿ."
-
-            else -> "SEBI registered advisor.\nGuaranteed 30% monthly returns.\nPay ₹20,000 today."
+            onSuccess()
         }
-
-        _uiState.update {
-            it.copy(
-                isLoading = false,
-                extractedText = sampleText,
-                result = mockData,
-                error = null
-            )
-        }
-
-        onSuccess()
     }
 
     private var voiceReplyManager: com.dev.satark.voice.VoiceReplyManager? = null
@@ -302,7 +363,7 @@ class HomeViewModel(
             _isSpeaking.value = false
         } else {
             val lang = _selectedLanguage.value
-            val speechText = buildVoiceSummary(result, lang)
+            val speechText = buildVoiceSummary(result)
             voiceReplyManager?.speak(speechText, lang)
         }
     }
@@ -312,129 +373,40 @@ class HomeViewModel(
         _isSpeaking.value = false
     }
 
-    private fun buildVoiceSummary(response: AnalysisResponse, languageCode: String): String {
-        return when (languageCode.lowercase()) {
-            "hi" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "अत्यधिक चिंता"
-                    "HIGH" -> "उच्च चिंता"
-                    "MEDIUM", "MODERATE" -> "मध्यम चिंता"
-                    else -> "कम चिंता"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "पहचाने गए चेतावनी संकेत: " + response.riskSignals.joinToString(", ") { it.title } + "।"
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "सुझाव: " + response.recommendedActions.first()
-                } else ""
-                "सतर्क सुरक्षा मूल्यांकन। स्तर: $levelText। चिंता स्कोर: 100 में से ${response.riskScore}। ${response.explanation} $signalsText $actionsText"
-            }
-            "ta" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "மிக அதிக கவலை"
-                    "HIGH" -> "அதிக கவலை"
-                    "MEDIUM", "MODERATE" -> "மிதமான கவலை"
-                    else -> "குறைந்த கவலை"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "கண்டறியப்பட்ட எச்சரிக்கை சமிக்ஞைகள்: " + response.riskSignals.joinToString(", ") { it.title } + "."
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "பாதுகாப்பு ஆலோசனை: " + response.recommendedActions.first()
-                } else ""
-                "சதர்க் பாதுகாப்பு மதிப்பீடு. நிலை: $levelText. கவலை மதிப்பெண்: 100க்கு ${response.riskScore}. ${response.explanation} $signalsText $actionsText"
-            }
-            "te" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "చాలా ఎక్కువ ఆందోళన"
-                    "HIGH" -> "అధిక ఆందోళన"
-                    "MEDIUM", "MODERATE" -> "మధ్యస్థ ఆందోళన"
-                    else -> "తక్కువ ఆందోళన"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "గుర్తించిన హెచ్చరిక సంకేతాలు: " + response.riskSignals.joinToString(", ") { it.title } + "."
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "సలహా: " + response.recommendedActions.first()
-                } else ""
-                "సతర్క్ భద్రతా అంచనా. స్థాయి: $levelText. ఆందోళన స్కోర్: 100కి ${response.riskScore}. ${response.explanation} $signalsText $actionsText"
-            }
-            "bn" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "অত্যন্ত উদ্বেগজনক"
-                    "HIGH" -> "উচ্চ উদ্বেগ"
-                    "MEDIUM", "MODERATE" -> "মাঝারি উদ্বেগ"
-                    else -> "কম উদ্বেগ"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "চিহ্নিত সতর্কতা সংকেত: " + response.riskSignals.joinToString(", ") { it.title } + "।"
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "পরামর্শ: " + response.recommendedActions.first()
-                } else ""
-                "সতর্ক সুরক্ষা মূল্যায়ন। স্তর: $levelText। উদ্বেগ স্কোর: ১০০ তে ${response.riskScore}। ${response.explanation} $signalsText $actionsText"
-            }
-            "mr" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "अति तीव्र चिंता"
-                    "HIGH" -> "उच्च चिंता"
-                    "MEDIUM", "MODERATE" -> "मध्यम चिंता"
-                    else -> "कमी चिंता"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "आढळलेले धोक्याचे संकेत: " + response.riskSignals.joinToString(", ") { it.title } + "."
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "सल्ला: " + response.recommendedActions.first()
-                } else ""
-                "सतर्क सुरक्षा मूल्यांकन. स्तर: $levelText. चिंता गुण: १०० पैकी ${response.riskScore}. ${response.explanation} $signalsText $actionsText"
-            }
-            "gu" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "અતિ ગંભીર ચિંતા"
-                    "HIGH" -> "ઉચ્ચ ચિંતા"
-                    "MEDIUM", "MODERATE" -> "મધ્યમ ચિંતા"
-                    else -> "ઓછી ચિંતા"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "મળેલા ચેતવણી સંકેતો: " + response.riskSignals.joinToString(", ") { it.title } + "."
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "સુરક્ષા સલાહ: " + response.recommendedActions.first()
-                } else ""
-                "સતર્ક સુરક્ષા મૂલ્યાંકન. સ્તર: $levelText. ચિંતા સ્કોર: 100 માંથી ${response.riskScore}. ${response.explanation} $signalsText $actionsText"
-            }
-            "kn" -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "ಅತ್ಯಂತ ತೀವ್ರ ಕಳವಳ"
-                    "HIGH" -> "ಹೆಚ್ಚಿನ ಕಳವಳ"
-                    "MEDIUM", "MODERATE" -> "ಮಧ್ಯಮ ಕಳವಳ"
-                    else -> "ಕಡಿಮೆ ಕಳವಳ"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "ಪತ್ತೆಯಾದ ಎಚ್ಚರಿಕೆ ಸಂಕೇತಗಳು: " + response.riskSignals.joinToString(", ") { it.title } + "."
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "ಸಲಹೆ: " + response.recommendedActions.first()
-                } else ""
-                "ಸತರ್ಕ್ ಸುರಕ್ಷತಾ ಮೌಲ್ಯಮಾಪನ. ಮಟ್ಟ: $levelText. ಕಾಳಜಿ ಸ್ಕೋರ್: 100 ಕ್ಕೆ ${response.riskScore}. ${response.explanation} $signalsText $actionsText"
-            }
-            else -> {
-                val levelText = when (response.riskLevel.uppercase()) {
-                    "VERY_HIGH", "CRITICAL" -> "Very High Concern"
-                    "HIGH" -> "High Concern"
-                    "MEDIUM", "MODERATE" -> "Moderate Concern"
-                    else -> "Low Concern"
-                }
-                val signalsText = if (response.riskSignals.isNotEmpty()) {
-                    "Warning signals detected: " + response.riskSignals.joinToString(", ") { it.title } + "."
-                } else ""
-                val actionsText = if (response.recommendedActions.isNotEmpty()) {
-                    "Advice: " + response.recommendedActions.first()
-                } else ""
-                "SATARK Safety Assessment. Concern level: $levelText. Concern score: ${response.riskScore} out of 100. ${response.explanation} $signalsText $actionsText"
-            }
+    private fun buildVoiceSummary(
+        response: AnalysisResponse
+    ): String {
+
+        val levelText = when (response.riskLevel.uppercase()) {
+            "VERY_HIGH", "CRITICAL" -> "Very High Concern"
+            "HIGH" -> "High Concern"
+            "MEDIUM", "MODERATE" -> "Moderate Concern"
+            else -> "Low Concern"
         }
+
+        val signalsText = if (response.riskSignals.isNotEmpty()) {
+            "Warning signals detected: " +
+                    response.riskSignals.joinToString(", ") { it.title } +
+                    "."
+        } else {
+            ""
+        }
+
+        val actionsText = if (response.recommendedActions.isNotEmpty()) {
+            "Recommended action: " +
+                    response.recommendedActions.first()
+        } else {
+            ""
+        }
+
+        return """
+        SATARK Safety Assessment.
+        Concern level: $levelText.
+        Concern score: ${response.riskScore} out of 100.
+        ${response.explanation}
+        $signalsText
+        $actionsText
+    """.trimIndent()
     }
 
     fun clearError() {
