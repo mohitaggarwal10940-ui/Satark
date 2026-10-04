@@ -410,7 +410,7 @@ Run tests with:
 ```properties
 .\gradlew test
 ```
-http://localhost:8080
+
 ### 3. Android Client Setup
 1. Open Android Studio and choose **Open an Existing Project**.
 2. Select the `android/` directory inside `Satark`.
